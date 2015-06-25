@@ -674,7 +674,7 @@ AUTOMATICMEMORYMANAGEMENT="False"
 # Default value : none
 # Mandatory     : YES
 #-----------------------------------------------------------------------------
-SOURCEDB = "myhost:1521:orcl"
+SOURCEDB = "localhost:1521:orcl"
 
 #-----------------------------------------------------------------------------
 # Name          : SYSDBAUSERNAME

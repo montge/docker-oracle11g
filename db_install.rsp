@@ -75,7 +75,7 @@ INVENTORY_LOCATION=/opt/oraInventory
 #
 # Example : SELECTED_LANGUAGES=en,fr,ja
 #------------------------------------------------------------------------------
-SELECTED_LANGUAGES=en,fr
+SELECTED_LANGUAGES=en,no
 
 #------------------------------------------------------------------------------
 # Specify the complete path of the Oracle Home.
