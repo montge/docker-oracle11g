@@ -40,6 +40,8 @@ This will build an image called `hedlund/oracle11g`. In case you want to build t
 $ docker build -t whatever_you_want .
  ```
 
+>Please note that this takes quite some time (it can take up to 10+ minutes), plus that you *might* run out of disk space in case you're running **Boot2Docker**. In that case you need to [resize your Boot2Docker volume](https://docs.docker.com/articles/b2d_volume_resize/).
+
 ## Running a container
 
 Running a container is straightforward:
@@ -48,7 +50,7 @@ Running a container is straightforward:
 $ docker run -p 1521:1521 hedlund/oracle11g
  ```
 
-This will start the container, map the database port to 1521 so that can access it, and then simply tail the Oracle listener log to stdout.
+This will start the container, map the database port to 1521 so that you can access it, and then simply tail the Oracle listener log to stdout.
 
 I've chosen to not install & run an SSH daemon (which was the case in the original repository), but you can easily add that if you want it.
 
