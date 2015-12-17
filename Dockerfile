@@ -1,5 +1,27 @@
-FROM hedlund/oraclelinux:6
-MAINTAINER henrik@hedlund.im
+FROM centos:centos6
+
+RUN ls -al /etc/yum.repos.d/
+
+# convert into Oracle Linux 6
+RUN curl -O https://linux.oracle.com/switch/centos2ol.sh
+RUN sh centos2ol.sh; echo success
+
+RUN yum upgrade -y
+
+#RUN mv /etc/yum.repos.d/libselinux.repo /etc/yum.repos.d/libselinux.repo.disabled
+
+RUN cd /etc/yum.repos.d
+RUN curl -O http://public-yum.oracle.com/public-yum-ol6.repo
+RUN sed -i 's/enabled=0/enabled=1/' public-yum-ol6.repo
+
+# fix locale error
+RUN echo LANG=en_US.utf-8 >> /etc/environment \
+ && echo LC_ALL=en_US.utf-8 >> /etc/environment
+
+# install UEK kernel
+RUN yum install -y elfutils-libs gcc
+RUN yum update -y --enablerepo=ol6_UEKR3_latest
+RUN yum install -y kernel-uek-devel --enablerepo=ol6_UEKR3_latest
 
 # Add extra packages
 RUN yum install -y oracle-rdbms-server-11gR2-preinstall unzip
